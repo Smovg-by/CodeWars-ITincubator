@@ -11,5 +11,35 @@
 // XO("zzoo") => false
 
 function XO(str) {
-  //code here
+  let testStr = str.toUpperCase();
+  let resObj = {};
+  for (let value of testStr) {
+    if (resObj[value] === undefined) {
+      resObj[value] = 1;
+    } else {
+      resObj[value]++;
+    }
+  }
+  if (resObj["X"] !== resObj["O"]) {
+    return false;
+  } else {
+    return true;
+  }
 }
+
+// OTHER SOLUTIONS:
+
+// - RegExp:
+
+// function XO(str) {
+//   let x = str.match(/x/gi);
+//   let o = str.match(/o/gi);
+//   return (x && x.length) === (o && o.length);
+// }
+
+// -convert to array and NodeFilter:
+
+// const XO = str => {
+//   str = str.toLowerCase().split('');
+//   return str.filter(x => x === 'x').length === str.filter(x => x === 'o').length;
+// }
